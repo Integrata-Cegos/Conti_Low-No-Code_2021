@@ -9,7 +9,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
 
 import org.javacream.publishing.JpaBooksService;
 import org.javacream.publishing.entities.Author;
@@ -53,7 +52,6 @@ public class PublishingTest {
 			author.setGivenNames(givenNames);
 			author.setLastname("AuthorLastname" + (i + 1));
 			authors[i] = author;
-//			entityManager.persist(author);
 		}
 
 		Publisher[] publishers = new Publisher[publisherSize];
@@ -67,7 +65,6 @@ public class PublishingTest {
 			for (int j = 0; j < booksSize; j++) {
 				BookStatistics bookStatistics = new BookStatistics(50 * j,
 						new Date());
-//				entityManager.persist(bookStatistics);
 				Book book = new Book("a simple book", new Isbn(i, j, 3, 4),
 						200 + j, 9.95 * j, "book" + i + j, bookStatistics,
 						false);
@@ -86,47 +83,19 @@ public class PublishingTest {
 					book.setKeywords(keywords2);
 				}
 				publisher.addBooks(book);
-//				entityManager.persist(book);
-
 			}
 		}
 		t.commit();
 
 	}
 	
-//	@Test 
-	public void testLazyBooks(){
-		EntityTransaction t = entityManager.getTransaction();
-		t.begin();
-		TypedQuery<Publisher> query = entityManager.createQuery("select p from Publisher as p where p.publisherName=:publisherName", Publisher.class);
-		query.setParameter("publisherName", "Publisher1");
-		Publisher p = query.getSingleResult();
-		t.commit();
-		entityManager.close();
-		System.out.println(p.getPublisherName());
-		System.out.println(p.getAddress());
-		System.out.println(p.getBooks());
-
-	}
-	
-	//@Test 
-	public void testLazyPublisher(){
-		EntityTransaction t = entityManager.getTransaction();
-		t.begin();
-		
-		Book book = entityManager.find(Book.class, 1l);
-		t.commit();
-		System.out.println(book.getTitle());
-		System.out.println(book.getPublisher());
-		entityManager.close();
-	}
 	
 	@Test 
 	public void testJpaBooksService(){
 		JpaBooksService jpaBooksService = new JpaBooksService();
 		jpaBooksService.setEntityManager(entityManager);
-		//System.out.println(jpaBooksService.findBestsellers());
-		//System.out.println(jpaBooksService.findPublishersForAuthor(1l));
+		System.out.println(jpaBooksService.findBestsellers());
+		System.out.println(jpaBooksService.findPublishersForAuthor(1l));
 		System.out.println(jpaBooksService.findBestSellersOrdered());
 	}
 }
