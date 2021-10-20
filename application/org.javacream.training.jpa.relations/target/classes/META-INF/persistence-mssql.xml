@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="JPA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<properties>
+			<!-- DataSource-Konfiguration -->
+			<property name="hibernate.connection.driver_class"
+				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+			<property name="hibernate.connection.password" value="javacream123!" />
+			<property name="hibernate.connection.url"
+				value="jdbc:sqlserver://h2908727.stratoserver.net:1433;databaseName=publishing" />
+			<property name="hibernate.connection.username" value="SA" />
+			<!-- Hibernate Konfiguration -->
+			<property name="hibernate.archive.autodetection"
+				value="class, hbm" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.SQLServerDialect" />
+			<!--  <property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
+			<property
+				name="javax.persistence.schema-generation.database.action"
+				value="none" />
+			<property
+				name="javax.persistence.schema-generation.scripts.action"
+				value="drop-and-create" />
+			<property
+				name="javax.persistence.schema-generation.scripts.create-target"
+				value="create-db-schema.ddl" />
+			<property
+				name="javax.persistence.schema-generation.scripts.drop-target"
+				value="drop-db-schema.jpa.ddl" />
+		</properties>
+	</persistence-unit>
+
+</persistence>
