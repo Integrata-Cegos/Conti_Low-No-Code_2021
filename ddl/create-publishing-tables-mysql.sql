@@ -1,0 +1,26 @@
+create table PUBLISHING_AUTHORS (authorId bigint not null, givenNameString varchar(255) not null, lastname varchar(255) not null, primary key (authorId)) engine=InnoDB;
+create table PUBLISHING_BOOK_KEYWORDS (Book_id bigint not null, keywords varchar(255)) engine=InnoDB;
+create table PUBLISHING_BOOKS (id bigint not null auto_increment, description varchar(255), isbn1 integer not null, isbn2 integer not null, isbn3 integer not null, isbn4 integer not null, pages INTEGER, price double precision not null, title varchar(255) not null, publisher_publisherId bigint, primary key (id)) engine=InnoDB;
+create table PUBLISHING_BOOKS_AUTHOR (books_id bigint not null, authors_authorId bigint not null, primary key (books_id, authors_authorId)) engine=InnoDB;
+create table PUBLISHING_BOOKS_STATISTICS (BOOK_STATISTICS_ID bigint not null, id bigint not null, primary key (id)) engine=InnoDB;
+create table PUBLISHING_POEMS (era varchar(255), id bigint not null, primary key (id)) engine=InnoDB;
+create table PUBLISHING_PUBLISHERS (publisherId bigint not null, city varchar(255), street varchar(255), publisherName varchar(255) not null, primary key (publisherId)) engine=InnoDB;
+create table PUBLISHING_SCHOOLBOOK (subject varchar(255), SCHOOL_YEAR integer, id bigint not null, primary key (id)) engine=InnoDB;
+create table PUBLISHING_SPECIALISTBOOK (category varchar(255), id bigint not null, primary key (id)) engine=InnoDB;
+create table PUBLISHING_STATISTICS (id bigint not null, lastSold time, sold integer not null, primary key (id)) engine=InnoDB;
+alter table PUBLISHING_AUTHORS add constraint UK_qkaixabgc5he9a80sbgg8ev59 unique (givenNameString);
+alter table PUBLISHING_AUTHORS add constraint UK_7olq4y6git25jn0p20hsctxv7 unique (lastname);
+alter table PUBLISHING_BOOKS add constraint UK5y6xltel1ioo2qkv4iywu356o unique (isbn1, isbn2, isbn3, isbn4);
+alter table PUBLISHING_BOOKS add constraint UK_71uyd6sdgw41tr4n5sqwsb7xk unique (title);
+alter table PUBLISHING_BOOKS_STATISTICS add constraint UK_fsnctvf5fxa6n7sc27jlxdbl7 unique (BOOK_STATISTICS_ID);
+alter table PUBLISHING_PUBLISHERS add constraint UK_44k18eo8d1pp2xypavmaanx7s unique (publisherName);
+alter table PUBLISHING_BOOK_KEYWORDS add constraint FKt5v5fei0iq1j7gnw4rksqp2yn foreign key (Book_id) references PUBLISHING_BOOKS (id);
+alter table PUBLISHING_BOOKS add constraint FK3fkhfh001c0t5r9tyg48qguth foreign key (publisher_publisherId) references PUBLISHING_PUBLISHERS (publisherId);
+alter table PUBLISHING_BOOKS_AUTHOR add constraint FKl2b27u8bdnptnf4pmo86qe4cl foreign key (authors_authorId) references PUBLISHING_AUTHORS (authorId);
+alter table PUBLISHING_BOOKS_AUTHOR add constraint FK1c7d3t7x75n12pb8awaqydwe8 foreign key (books_id) references PUBLISHING_BOOKS (id);
+alter table PUBLISHING_BOOKS_STATISTICS add constraint FKofw7i2cd4rj7s5n09gvgck8ov foreign key (BOOK_STATISTICS_ID) references PUBLISHING_STATISTICS (id);
+alter table PUBLISHING_BOOKS_STATISTICS add constraint FKq8rs4ou51h09tqg7w567412pt foreign key (id) references PUBLISHING_BOOKS (id);
+alter table PUBLISHING_POEMS add constraint FK1re9xbvd29ej5h8gnek73v8xm foreign key (id) references PUBLISHING_BOOKS (id);
+alter table PUBLISHING_SCHOOLBOOK add constraint FKhhemg4orngnvk5ijuw040k4cl foreign key (id) references PUBLISHING_BOOKS (id);
+alter table PUBLISHING_SPECIALISTBOOK add constraint FKm3s1por74rklnnc7hw55ynfby foreign key (id) references PUBLISHING_BOOKS (id);
+
