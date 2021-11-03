@@ -1,2 +1,3 @@
-USE publishing
-EXEC ShowPublishers
+USE publishing;
+EXEC ShowPublishers;
+EXEC sp_helptext 'ShowPublishers';
