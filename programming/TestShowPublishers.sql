@@ -1,0 +1,2 @@
+USE publishing
+EXEC ShowPublishers
