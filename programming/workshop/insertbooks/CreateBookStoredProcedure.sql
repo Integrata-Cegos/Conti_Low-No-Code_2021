@@ -7,7 +7,7 @@ BEGIN
     DECLARE @insertResult TABLE (generatedId numeric(19,0))
     DECLARE @generatedId numeric(19,0)
 
-    INSERT INTO PUBLISHING_BOOKS (isbn1, isbn2, isbn3, isbn4, price, title) OUTPUT INSERTED.id INTO @insertResult(generatedId) VALUES (@isbn1, @isbn2, @isbn3, @isbn4, @price, @title);
+    INSERT INTO PUBLISHING_BOOKS (isbn1, isbn2, isbn3, isbn4, price, title) OUTPUT INSERTED.id INTO @insertResult(generatedId) VALUES (@isbn1, @isbn2, @isbn3, @isbn4, @price, @title)
     select @generatedId = generatedId from @insertResult
     IF @subject IS NOT NULL AND @year > 0
         BEGIN
