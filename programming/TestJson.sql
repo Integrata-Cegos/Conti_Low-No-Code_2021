@@ -2,4 +2,4 @@ DECLARE @jsonObject NVARCHAR(MAX)
 
 set @jsonObject = '{"lastname": "Meier", "firstname": "Fritz"}'
 
-select data.* from OPENJSON(@jsonObject, '$') WITH (lastname varchar(100) '$.lastname', firstname varchar(100) '$.firstname') as data
+select * from OPENJSON(@jsonObject, '$') WITH (ln varchar(100) '$.lastname', fn varchar(100) '$.firstname')
