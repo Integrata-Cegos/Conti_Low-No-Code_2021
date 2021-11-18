@@ -7,4 +7,4 @@ REM demo zum Arbeitsverzeichniss machen
 cd data
 
 REM message.txt schreiben
-echo Hello > message.txt
+echo Hello > message.tx
