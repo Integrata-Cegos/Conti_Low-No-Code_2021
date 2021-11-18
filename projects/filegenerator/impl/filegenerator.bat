@@ -1,10 +1,10 @@
 REM implementation of filegenerator, see filegenerator-specification.txt
 
 REM Anlegen des Verzeichnisses demo 
-mkdir demo
+mkdir data
 
 REM demo zum Arbeitsverzeichniss machen
-cd demo
+cd data
 
 REM message.txt schreiben
-echo Hello > message.tx
+echo Hello > message.txt
