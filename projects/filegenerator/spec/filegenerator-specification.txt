@@ -1,0 +1,1 @@
+Die Anwendung soll in einem neu angelegten Verzeichnis eine Datei namens message.txt anlegen mit Inhalt 'Hello'
