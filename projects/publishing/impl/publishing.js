@@ -4,7 +4,7 @@ addressInMunich.street =  'Marienplatz'
 
 var addressInBerlin = {}
 addressInBerlin.city = 'Berlin'
-addressInBerlin.city = 'Alexanderplatz'
+addressInBerlin.street = 'Alexanderplatz'
 
 
 var book1 = {}
