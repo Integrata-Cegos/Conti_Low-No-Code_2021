@@ -9,7 +9,21 @@ var book2 = {isbn: "ISBN2", title: "C#", price: 39.99}
 var publisher1 = {name: "Springer", address: addressInBerlin}
 
 
-//gibt aus den Namen des publisher1
-console.log(publisher1.name)
-//gibt aus die Stadt des publisher1
-console.log(publisher1.address.city)
+var sawitzki = {lastname: "Sawitzki", firstname: "Rainer"}
+var fabricius = {lastname: "Fabricius", firstname: "Carola"}
+
+sawitzki.address = addressInMunich
+fabricius.address = addressInBerlin
+
+
+sawitzki.partner = fabricius
+fabricius.partner = sawitzki
+
+console.log(fabricius)
+console.log(sawitzki)
+
+console.log(sawitzki.lastname)
+console.log(sawitzki.partner.lastname)
+console.log(sawitzki.partner.partner.lastname)
+
+
