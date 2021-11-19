@@ -19,8 +19,8 @@ fabricius.address = addressInBerlin
 sawitzki.partner = fabricius
 fabricius.partner = sawitzki
 
-console.log(fabricius)
-console.log(sawitzki)
+// console.log(fabricius)
+// console.log(sawitzki)
 
 console.log(sawitzki.lastname)
 console.log(sawitzki.partner.lastname)
