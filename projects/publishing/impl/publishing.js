@@ -51,3 +51,5 @@ jsBook.authors[1] = schneider
 
 cBook.authors[0] = schneider
 
+//springer.books.filter(book => book.isbn === 'ISBN1').map(book => book.title).forEach(book => console.log(book))
+springer.books.filter(book => book.price > 9.99 && book.price < 100).map(book => book.title).forEach(book => console.log(book))
