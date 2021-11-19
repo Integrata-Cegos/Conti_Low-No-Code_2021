@@ -51,6 +51,3 @@ jsBook.authors[1] = schneider
 
 cBook.authors[0] = schneider
 
-
-console.log(springer)
-console.log(jsBook)
