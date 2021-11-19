@@ -15,7 +15,7 @@ book1.price = 19.99
 var book2 = {}
 book2.isbn = "ISBN2"
 book2.title="C#"
-book3.price = 39.99
+book2.price = 39.99
 
 var publisher1 = {}
 publisher1.name = "Springer"
