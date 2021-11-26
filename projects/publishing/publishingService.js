@@ -61,7 +61,6 @@ async function findPosids(id){
     await sql.connect(sqlConfig)
     const result = await sql.query(`select value from JSON_DATA where col_key = ${id}`)
     let posids = result.recordset[0].value
-    console.log(posids)
     let posidsArray = JSON.parse(posids)
     sql.close()
     return posidsArray.map((element) => element.posid_json_array)

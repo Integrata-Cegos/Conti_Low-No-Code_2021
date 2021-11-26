@@ -10,6 +10,9 @@ async function app(){
     let books = await service.findBooksByTitle('T')
     console.log(books)
 
+    let ids = await service.findPosids(1)
+    console.log(ids)
+
 }
 
 app()
