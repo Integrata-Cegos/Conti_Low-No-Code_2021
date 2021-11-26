@@ -25,6 +25,20 @@ try {
     console.log(err)
 }}
 
+async function findBooksByTitle(title){
+  try {
+    await sql.connect(sqlConfig)
+    const result = await sql.query(`select * from PUBLISHING_BOOKS where title Like '${title}%'`)
+    
+    let books = result.recordset
+    sql.close()
+    return books
+   } catch (err) {
+      console.log(err)
+  }}
+  
+
+
 async function findPublisherById(id){
   try {
     await sql.connect(sqlConfig)
@@ -44,3 +58,4 @@ function parseIsbn(isbn){
 
 exports.findBookByIsbn = findBookByIsbn
 exports.findPublisherById = findPublisherById
+exports.findBooksByTitle = findBooksByTitle
