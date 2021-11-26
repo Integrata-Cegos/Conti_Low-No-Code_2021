@@ -25,8 +25,22 @@ try {
     console.log(err)
 }}
 
+async function findPublisherById(id){
+  try {
+    await sql.connect(sqlConfig)
+    const result = await sql.query(`select * from PUBLISHING_PUBLISHERS where publisherId = ${id}`)
+    
+    let publisher = result.recordset[0]
+    sql.close()
+    return publisher
+   } catch (err) {
+      console.log(err)
+  }}
+  
+
 function parseIsbn(isbn){
     return isbn.split('-').map((isbn) => parseInt(isbn))
 }
 
 exports.findBookByIsbn = findBookByIsbn
+exports.findPublisherById = findPublisherById
