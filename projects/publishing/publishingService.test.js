@@ -13,4 +13,8 @@ describe("publishingService", () => {
         let publisher = await publishingService.findPublisherById(1)
         expect(publisher.publisherName).toBe('Publisher1')
     }) 
+    test('posids is array with 5 elements', async () => {
+        let posids = await publishingService.findPosids(1)
+        expect(posids.length).toBe(5)
+    }) 
 })

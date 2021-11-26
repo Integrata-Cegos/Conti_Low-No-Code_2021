@@ -56,6 +56,22 @@ function parseIsbn(isbn){
     return isbn.split('-').map((isbn) => parseInt(isbn))
 }
 
+async function findPosids(id){
+  try {
+    await sql.connect(sqlConfig)
+    const result = await sql.query(`select value from JSON_DATA where col_key = ${id}`)
+    let posids = result.recordset[0].value
+    console.log(posids)
+    let posidsArray = JSON.parse(posids)
+    sql.close()
+    return posidsArray.map((element) => element.posid_json_array)
+   } catch (err) {
+      console.log(err)
+  }}
+  
+
+
 exports.findBookByIsbn = findBookByIsbn
 exports.findPublisherById = findPublisherById
 exports.findBooksByTitle = findBooksByTitle
+exports.findPosids = findPosids
