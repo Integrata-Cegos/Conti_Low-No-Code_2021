@@ -2,7 +2,7 @@
   "name": "sawitzki_publishing",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "publishingService.js",
   "scripts": {
     "test": "jest"
   },
